@@ -1,0 +1,169 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta name="author" content="Andrey Leshenko">
+    <title>
+        <asp:ContentPlaceHolder ID="PageTitle" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </title>
+    <style type="text/css">
+        * {
+            font-family : 'Open Sans';
+            color : #999999;
+        }
+        body {
+            background-image : url('Images/triangular.png');
+        }
+        #page-container {
+            padding : 1em 4.7em 2.9em;
+        }
+        #toolbar {
+            margin-left : auto;
+            margin-right : auto;
+            max-width : 80em;
+            padding : 0.7em 0;
+            border-radius : 4px;
+            color : #999999;
+            box-shadow: 0px 0px 30px #2e2e2e;
+            background-color : #1A1A1A;
+        }
+        #toolbar-buttons {
+            font-size : 1.2em;
+            text-align : left;
+            padding-left : 3em;
+        }
+        #toolbar-logo {
+            font-size : 1.2em;
+            float : right;
+            padding-right : 3em;
+        }
+        #page-body {
+            max-width : 80em;
+            margin : 6.3em auto 0;
+
+            /*min-height : 800px;*/
+            border-radius : 4px;
+            color : #999999;
+            box-shadow: 0px 0px 30px #2e2e2e;
+            background-color : #1A1A1A;
+            /* a dark stripe at the end of the box */
+            padding-bottom : 4em;
+        }
+        .text-main-container {
+            padding : 2em 4em;
+            background-color : #282828;
+        }
+        .page-footer {
+            text-align : center;
+            color : #2e2e2e;
+        }
+
+        h1 {
+            font-weight : normal;
+            font-size : 4em;
+            text-align : center;
+            padding-top : 0.3em;
+        }
+
+        a {
+            text-decoration : none;
+            color : #999999;
+
+            transition: color 0.2s;
+            -webkit-transition: color 0.2s; /* Safari */
+            transition: text-shadow 0.2s;
+            -webkit-transition: text-shadow 0.2s; /* Safari */
+        }
+        a:hover {
+            text-shadow : #bfbebe 0 0 0.075em;
+            color : #bfbebe;
+        }
+        
+        ::selection {
+            color : black;
+            background : #ffffff;
+
+        }
+        ::-moz-selection {
+            color:red;
+            background:yellow;
+        }
+        
+        .form-descriptions
+        {
+            display: inline-block;
+        }
+        .form-fileds 
+        {
+            display: inline-block;
+        }
+        #login-wrapper
+        {
+            margin: auto;
+            width: 20em;
+        }
+        .logedin-wrapper
+        {
+            color: Black;
+        }
+    </style>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body dir="rtl">
+    <div id="page-container">
+        <!-- http://subtlepatterns.com/stardust/ -->
+        <div id="toolbar">
+            <nav>
+                <div id="toolbar-logo">
+                    <a href="Homepage.aspx">
+                        • משמר אזרחי
+                    </a>
+                </div>
+
+                <div id="toolbar-buttons">
+                    <a href="About.aspx">אודות</a> |
+                    <a href="Volunteering.aspx">התנדבות</a> |
+                    <a href="Gallery.aspx">תמונות</a> |
+                    <a href="http://example.com/">הרשמה</a> |
+                    <span runat="server" id="loginButton">
+                        <a href="Login.aspx">התחברות</a>
+                    </span>
+                    <span runat="server" id="logoutButton">
+                        <a href="Logout.aspx">התנתקות</a>
+                    </span>
+                    
+                </div>
+
+                
+            </nav>
+        </div>
+        <span class="logedin-wrapper">
+            <%=user%>
+        </span>
+        <div id="page-body">
+        
+            <h1>
+                <asp:ContentPlaceHolder ID="MainTitleText" runat="server">
+                </asp:ContentPlaceHolder>
+            </h1>
+            <div class="text-main-container">
+                    <asp:ContentPlaceHolder ID="PageBodyText" runat="server">
+                    </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <div class="">
+
+        </div>
+
+    </div>
+    <div class="page-footer">
+            &copy Andrey Leshenko 2014
+    </div>
+</body>
+</html>
