@@ -6,12 +6,12 @@ using System.Data;
 
 public static class DataLink
 {
-    public struct OperationResault
+    public struct OperationResult
     {
         public bool succeded;
         public string message;
 
-        public OperationResault(bool succeded, string message)
+        public OperationResult(bool succeded, string message)
         {
             this.succeded = succeded;
             this.message = message;
@@ -24,12 +24,12 @@ public static class DataLink
         return MyAdoHelper.IsExist(database, sql);
     }
 
-    public static OperationResault AddUser(string email, string fname, string lname, string password, string id)
+    public static OperationResult AddUser(string email, string fname, string lname, string password, string id)
     {
         if (IsEmailRegistered(email))
-            return new OperationResault(false, "The email you are using has already registered");
+            return new OperationResult(false, "The email you are using has already registered");
         if (IsIDRegistered(id))
-            return new OperationResault(false, "The id you are using has already registered");
+            return new OperationResult(false, "The id you are using has already registered");
 
 
         string sql = string.Format("INSERT INTO Users (Email, ID, FirstName, LastName, PassHash, Admin) VALUES ('{0}','{1}','{2}','{3}', '{4}', 'False')",
@@ -37,34 +37,34 @@ public static class DataLink
         MyAdoHelper.DoQuery(database, sql);
 
         if (ConfirmRegistration(email, fname, lname, password, id))
-            return new OperationResault(true, "Success");
+            return new OperationResult(true, "Success");
         else
-            return new OperationResault(false, "Database Error");
+            return new OperationResult(false, "Database Error");
     }
 
-    public static OperationResault UpdateEmail(string oldEmail ,string newEmail)
+    public static OperationResult UpdateEmail(string oldEmail ,string newEmail)
     {
         if (IsEmailRegistered(newEmail))
-            return new OperationResault(false, "The email you are using has already registered");
+            return new OperationResult(false, "The email you are using has already registered");
 
         string sql = string.Format("UPDATE Users SET Email='{0}' WHERE Email='{1}'", newEmail, oldEmail);
         MyAdoHelper.DoQuery(database, sql);
 
         if (IsEmailRegistered(newEmail))
-            return new OperationResault(true, "The email has been changed");
+            return new OperationResult(true, "The email has been changed");
         else
-            return new OperationResault(false, "Database Error");
+            return new OperationResult(false, "Database Error");
     }
 
-    public static OperationResault UpdatePassword(string email, string newPassword)
+    public static OperationResult UpdatePassword(string email, string newPassword)
     {
         string sql = string.Format("UPDATE Users SET PassHash='{0}' WHERE email='{1}'", GetHashedPassword(newPassword), email);
         MyAdoHelper.DoQuery(database, sql);
         string select = string.Format("SELECT * FROM USERS WHERE Email='{0}' AND PassHash='{1}'", email, GetHashedPassword(newPassword));
         if (MyAdoHelper.IsExist(database, select))
-            return new OperationResault(true, "The password has been changed");
+            return new OperationResult(true, "The password has been changed");
         else
-            return new OperationResault(false, "Database Error");
+            return new OperationResult(false, "Database Error");
     }
 
     public static DataTable GetAllUsers()
@@ -72,10 +72,39 @@ public static class DataLink
         return MyAdoHelper.ExecuteDataTable("Database.mdf", "SELECT * FROM Users");
     }
 
-    public static void Delete(string email)
+    public static OperationResult Delete(string email)
     {
         string sql = string.Format("DELETE FROM Users WHERE Email='{0}'", email);
         MyAdoHelper.DoQuery(database, sql);
+
+        string select = string.Format("SELECT * FROM USERS WHERE Email='{0}'", email);
+        if (MyAdoHelper.IsExist(database, select))
+            return new OperationResult(true, "User deleted");
+        else
+            return new OperationResult(false, "Database Error");
+        
+    }
+
+    public static OperationResult SetAdmin(string email)
+    {
+        string sql = string.Format("UPDATE Users SET Admin='{0}' WHERE Email='{1}'", true, email);
+        MyAdoHelper.DoQuery(database, sql);
+        string select = string.Format("SELECT * FROM USERS WHERE Email='{0}' AND Admin='{1}'", email, true);
+        if (MyAdoHelper.IsExist(database, select))
+            return new OperationResult(true, "User marked as administrator");
+        else
+            return new OperationResult(false, "Database Error");
+    }
+
+    public static OperationResult UnsetAdmin(string email)
+    {
+        string sql = string.Format("UPDATE Users SET Admin='{0}' WHERE Email='{1}'", false, email);
+        MyAdoHelper.DoQuery(database, sql);
+        string select = string.Format("SELECT * FROM USERS WHERE Email='{0}' AND Admin='{1}'", email, false);
+        if (MyAdoHelper.IsExist(database, select))
+            return new OperationResult(true, "Administrator rights removed");
+        else
+            return new OperationResult(false, "Database Error");
     }
 
     private static string database = "Database.mdf";

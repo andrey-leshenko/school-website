@@ -15,7 +15,7 @@ public partial class Default2 : System.Web.UI.Page
         string lname = "b";
         string id = "322026528";
 
-        DataLink.OperationResault resault = DataLink.AddUser(email, fname, lname, password, id);
+        DataLink.OperationResult resault = DataLink.AddUser(email, fname, lname, password, id);
 
         Session["user"] = null;
         if (Session["user"] != null)

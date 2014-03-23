@@ -21,7 +21,7 @@ public partial class _Default : System.Web.UI.Page
             string id               = Request["id"];
 
 
-            DataLink.OperationResault resault = DataLink.AddUser(email, firstName, lastName, password, id);
+            DataLink.OperationResult resault = DataLink.AddUser(email, firstName, lastName, password, id);
 
             if (!resault.succeded)
             {
