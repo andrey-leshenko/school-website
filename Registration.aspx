@@ -8,13 +8,11 @@
         function checkForm() {
             var firstName = inputForm.firstName.value;
             var lastName = inputForm.lastName.value;
-            var phone = inputForm.phone.value;
             var firstPassword = inputForm.userPassword.value;
             var secondPassword = inputForm.repeatPassword.value;
             var email = inputForm.email.value;
 
-            if (firstName == "" || lastName == "" || phone == ""
-                || firstPassword == "" || secondPassword == "" || email == "") {
+            if (firstName == "" || lastName == "" || firstPassword == "" || secondPassword == "" || email == "") {
                 alert("The entire form must be filled");
                 return false;
             }
@@ -25,10 +23,6 @@
             }
             if (!isValidName(lastName)) {
                 alert("Invalid lastName name");
-                return false;
-            }
-            if (!isValidPhone(phone)) {
-                alert("Invalid phone");
                 return false;
             }
 
@@ -67,19 +61,6 @@
             }
             return true;
         }
-        function isValidPhone(phone) {
-            var i;
-            if (phone.charAt(0) != 0) {
-                return false;
-            }
-            for (i = 0; i < phone.length; i++) {
-                if (isNaN(parseInt(phone.charAt(i))) && phone.charAt(i) != '-') {
-                    return false;
-                }
-            }
-            return true;
-        }
-
 	</script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainTitleText" Runat="Server">
@@ -90,7 +71,6 @@
 	First name:         <input type="text"      name="firstName"/><br/>
 	Last name:          <input type="text"      name="lastName"/><br/>
     ID                  <input type="text"      name="id" /><br />
-	Phone:              <input type="text"      name="phone"/><br/>
 	Password:           <input type="password"  name="userPassword"/><br/>
 	Repeat Password:    <input type="password"  name="repeatPassword"/><br/>
 	Email:              <input type="text"      name="email"/><br/>

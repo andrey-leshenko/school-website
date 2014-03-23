@@ -129,7 +129,8 @@
                     <a href="About.aspx">אודות</a> |
                     <a href="Volunteering.aspx">התנדבות</a> |
                     <a href="Gallery.aspx">תמונות</a> |
-                    <a href="http://example.com/">הרשמה</a> |
+                    <a href="Registration.aspx">הרשמה</a> |
+                    <a href="Admin.aspx">ניהול</a> |
                     <span runat="server" id="loginButton">
                         <a href="Login.aspx">התחברות</a>
                     </span>
