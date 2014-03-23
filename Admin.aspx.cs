@@ -23,13 +23,12 @@ public partial class _Default : System.Web.UI.Page
 
         for (int i = 0; i < table.Rows.Count; i++)
         {
-            usersTable += "<tr>";
+            usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["Email"]);
+            usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["ID"]);
+            usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["FirstName"]);
+            usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["LastName"]);
             
-            for (int j = 0; j < table.Columns.Count; j++)
-            {
-                usersTable += "<td>" + table.Rows[i][j] + @"</td>";
-            }
-            usersTable += "<td><button onclick ='window.location.href=\"Admin.aspx?deleteEmail=" + table.Rows[i]["Email"] + "\"'>Delete</button></td>";
+            usersTable += "<td><button onclick ='window.location.href=\"Admin.aspx?deleteEmail=" + table.Rows[i]["Email"] + "\"'>X</button></td>";
             usersTable += @"</tr>";
         }
     }

@@ -31,11 +31,11 @@
     <table>
     <input type="hidden" value="" id="deletedUser"/>
     <tr>
-        <th>Username</th>
+        <th>Email</th>
         <th>ID</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Password Hash</th>
+        <th>Delete</th>
     </tr>
     <%=usersTable %>
     </table>
