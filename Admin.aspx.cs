@@ -12,8 +12,12 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request["deletedUser"] != "")
-            DataLink.Delete(Request["deletedUser"]);
+        if (Request.QueryString["deleteEmail"] != null)
+        {
+            string email = Request.QueryString["deleteEmail"];
+
+            DataLink.Delete(email);
+        }
 
         DataTable table = DataLink.GetAllUsers();
 
@@ -25,7 +29,7 @@ public partial class _Default : System.Web.UI.Page
             {
                 usersTable += "<td>" + table.Rows[i][j] + @"</td>";
             }
-            usersTable += @"<td><button onClick(deleteUser(" + table.Rows[i][0] + @"))>Delete</button></td>";
+            usersTable += "<td><button onclick ='window.location.href=\"Admin.aspx?deleteEmail=" + table.Rows[i]["Email"] + "\"'>Delete</button></td>";
             usersTable += @"</tr>";
         }
     }
