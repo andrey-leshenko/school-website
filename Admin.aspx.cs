@@ -27,6 +27,7 @@ public partial class _Default : System.Web.UI.Page
             usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["ID"]);
             usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["FirstName"]);
             usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["LastName"]);
+            usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["Admin"]);
             
             usersTable += "<td><button onclick ='window.location.href=\"Admin.aspx?deleteEmail=" + table.Rows[i]["Email"] + "\"'>X</button></td>";
             usersTable += @"</tr>";

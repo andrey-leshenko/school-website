@@ -12,13 +12,11 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        System.Data.SqlClient.SqlConnection conn = MyAdoHelper.ConnectToDb("Database.mdf");
-        conn.Open();
         if (Request["submit"] != null)
         {
             string firstName        = Request["firstName"];
             string lastName         = Request["lastName"];
-            string password    = Request["userPassword"];
+            string password         = Request["userPassword"];
             string email            = Request["email"];
             string id               = Request["id"];
 

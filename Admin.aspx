@@ -35,6 +35,7 @@
         <th>ID</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Admin</th>
         <th>Delete</th>
     </tr>
     <%=usersTable %>

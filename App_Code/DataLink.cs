@@ -32,7 +32,7 @@ public static class DataLink
             return new OperationResault(false, "The id you are using has already registered");
 
 
-        string sql = string.Format("INSERT INTO Users (Email, ID, FirstName, LastName, PassHash) VALUES ('{0}','{1}','{2}','{3}', '{4}')",
+        string sql = string.Format("INSERT INTO Users (Email, ID, FirstName, LastName, PassHash, Admin) VALUES ('{0}','{1}','{2}','{3}', '{4}', 'False')",
             email, id, fname, lname, GetHashedPassword(password));
         MyAdoHelper.DoQuery(database, sql);
 
