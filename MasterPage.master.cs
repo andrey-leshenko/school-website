@@ -22,6 +22,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
             logoutButton.Visible = false;
         }
 
+        if (Session["admin"] == null || (bool)Session["admin"] == false)
+            adminButton.Visible = false;
+
         if (Application["visiters"] == null)
             Application["visiters"] = 0;
 

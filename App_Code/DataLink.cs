@@ -107,6 +107,12 @@ public static class DataLink
             return new OperationResult(false, "Database Error");
     }
 
+    public static bool IsAdmin(string email)
+    {
+        string sql = string.Format("SELECT * FROM USERS WHERE Email='{0}' AND Admin='True'", email);
+        return MyAdoHelper.IsExist(database, sql);
+    }
+
     private static string database = "Database.mdf";
 
     private static bool IsEmailRegistered(string email)

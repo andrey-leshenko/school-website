@@ -13,6 +13,9 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["admin"] == null || (bool)Session["admin"] == false)
+            Response.Redirect("Homepage.aspx");
+
         if (Request["deleteUser"] != null)
         {
             string email = Request["deleteUser"];

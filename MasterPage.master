@@ -130,7 +130,9 @@
                     <a href="Volunteering.aspx">התנדבות</a> |
                     <a href="Gallery.aspx">תמונות</a> |
                     <a href="Registration.aspx">הרשמה</a> |
-                    <a href="Admin.aspx">ניהול</a> |
+                    <span runat="server" id="adminButton">
+                        <a href="Admin.aspx">ניהול</a> |
+                    </span>
                     <span runat="server" id="loginButton">
                         <a href="Login.aspx">התחברות</a>
                     </span>

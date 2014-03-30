@@ -1,3 +1,2 @@
 - Updating user data (the user itself)
 - gallery
-- Letting only admins go to the admin page

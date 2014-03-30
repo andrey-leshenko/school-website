@@ -22,6 +22,7 @@ public partial class Default3 : System.Web.UI.Page
             if (DataLink.LogIn(email, password))
             {
                 Session["user"] = email;
+                Session["admin"] = DataLink.IsAdmin(email);
                 loginResponse = "You have loged in successfully.";
                 Response.Redirect("Homepage.aspx");
             }
