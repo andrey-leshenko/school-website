@@ -12,27 +12,22 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString["delete"] != null)
+        if (Request["deleteUser"] != null)
         {
-            string email = Request.QueryString["delete"];
-
+            string email = Request["deleteUser"];
             DataLink.Delete(email);
         }
 
-        if (Request.QueryString["setAdmin"] != null)
+        if (Request["setAdmin"] != null)
         {
-            string email = Request.QueryString["setAdmin"];
-
+            string email = Request["setAdmin"];
             DataLink.OperationResult result = DataLink.SetAdmin(email);
-            int i = 0;
         }
 
-        if (Request.QueryString["unsetAdmin"] != null)
+        if (Request["unsetAdmin"] != null)
         {
-            string email = Request.QueryString["unsetAdmin"];
-
+            string email = Request["unsetAdmin"];
             DataLink.OperationResult result = DataLink.UnsetAdmin(email);
-            int i = 0;
         }
 
         DataTable table = DataLink.GetAllUsers();
@@ -44,12 +39,10 @@ public partial class _Default : System.Web.UI.Page
             usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["FirstName"]);
             usersTable += string.Format(@"<td>{0}</td>", table.Rows[i]["LastName"]);
             if ((bool)table.Rows[i]["Admin"])
-                usersTable += "<td><input type='checkbox' onclick ='window.location.href=\"Admin.aspx?unsetAdmin="
-                    + table.Rows[i]["Email"] + "\"' checked></input></td>";
+                usersTable += "<td><input type='checkbox' onclick='unsetAdmin(\"" + table.Rows[i]["Email"] + "\")' checked></input></td>";
             else
-                usersTable += "<td><input type='checkbox' onclick ='window.location.href=\"Admin.aspx?setAdmin="
-                    + table.Rows[i]["Email"] + "\"'></input></td>";
-            usersTable += "<td><button onclick ='window.location.href=\"Admin.aspx?delete=" + table.Rows[i]["Email"] + "\"'>X</button></td>";
+                usersTable += "<td><input type='checkbox' onclick='setAdmin(\"" + table.Rows[i]["Email"] + "\")'></input></td>";
+            usersTable += "<td><button onclick='deleteUser(\"" + table.Rows[i]["Email"] + "\")'>X</button></td>";
             usersTable += @"</tr>";
         }
     }
