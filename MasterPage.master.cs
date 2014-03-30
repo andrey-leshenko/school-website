@@ -21,5 +21,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             logoutButton.Visible = false;
         }
+
+        if (Application["visiters"] == null)
+            Application["visiters"] = 0;
+
+        if (Session["countedVisiter"] == null)
+        {
+            Application["visiters"] = (int)Application["visiters"] + 1;
+            Session["countedVisiter"] = true;
+        }
     }
 }

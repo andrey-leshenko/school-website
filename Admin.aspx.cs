@@ -9,6 +9,7 @@ using System.Data;
 public partial class _Default : System.Web.UI.Page
 {
     public string usersTable = "";
+    public int visiterCounter;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -45,5 +46,13 @@ public partial class _Default : System.Web.UI.Page
             usersTable += "<td><button onclick='deleteUser(\"" + table.Rows[i]["Email"] + "\")'>X</button></td>";
             usersTable += @"</tr>";
         }
+    }
+
+    // This will load after MasterPage.On_Load()
+    protected override void OnLoadComplete(EventArgs e)
+    {
+        if (Application["visiters"] != null)
+            visiterCounter = (int)Application["visiters"];
+        base.OnLoadComplete(e);
     }
 }

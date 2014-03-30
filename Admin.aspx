@@ -42,6 +42,10 @@
         <input type="hidden" value="" name="unsetAdmin" />
     </form>
 
+    <p>
+        מונה מבקרים: <%=visiterCounter %>
+    </p>
+
     <table>
     <tr>
         <th>Email</th>
