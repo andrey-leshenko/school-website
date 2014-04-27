@@ -30,6 +30,9 @@
             adminActions.unsetAdmin.value = email;
             adminActions.submit();
         }
+        function searchUsers() {
+            adminActions.submit();
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainTitleText" Runat="Server">
@@ -46,8 +49,9 @@
         <input type="hidden" value="" name="unsetAdmin" />
 
         <input type="text" value="" name="search" />
+        <input type="button" value="חפש" name="submitSearch" onclick="searchUsers()"/>
     </form>
-
+    <br />
     <table>
     <tr>
         <th>Email</th>

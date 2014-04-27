@@ -34,7 +34,14 @@ public partial class _Default : System.Web.UI.Page
             DataLink.OperationResult result = DataLink.UnsetAdmin(email);
         }
 
-        DataTable table = DataLink.GetAllUsers();
+        DataTable table;
+
+        string str = Request["search"];
+
+        if (Request["search"] != "")
+            table = DataLink.GetAllUsers(Request["search"]);
+        else
+            table = DataLink.GetAllUsers();
 
         for (int i = 0; i < table.Rows.Count; i++)
         {
@@ -58,4 +65,6 @@ public partial class _Default : System.Web.UI.Page
             visiterCounter = (int)Application["visiters"];
         base.OnLoadComplete(e);
     }
+
+    private string userSearch = "";
 }

@@ -67,9 +67,19 @@ public static class DataLink
             return new OperationResult(false, "Database Error");
     }
 
-    public static DataTable GetAllUsers()
+    public static DataTable GetAllUsers(string searhString = null)
     {
-        return MyAdoHelper.ExecuteDataTable("Database.mdf", "SELECT * FROM Users");
+        if (searhString == null || searhString == "")
+            return MyAdoHelper.ExecuteDataTable(database, "SELECT * FROM Users");
+
+        string first = string.Format("FirstName LIKE '%{0}%'", searhString);
+        string last = string.Format("LastName LIKE '%{0}%'", searhString);
+        string email = string.Format("Email LIKE '%{0}%'", searhString);
+        string id = string.Format("ID LIKE '%{0}%'", searhString);
+
+        string sql = string.Format("SELECT * FROM Users WHERE {0} OR {1} OR {2} OR {3}", first, last, email, id);
+
+        return MyAdoHelper.ExecuteDataTable(database, sql);
     }
 
     public static OperationResult Delete(string email)
