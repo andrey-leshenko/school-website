@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Registration.aspx.cs" Inherits="_Default" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" runat="Server">
+    הרשמה
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     <script type="text/javascript">
         function checkForm() {
             var firstName = inputForm.firstName.value;
@@ -12,34 +13,23 @@
             var secondPassword = inputForm.repeatPassword.value;
             var email = inputForm.email.value;
 
-            if (firstName == "" || lastName == "" || firstPassword == "" || secondPassword == "" || email == "" || id == "") {
-                alert("The entire form must be filled");
-                return false;
-            }
+            if (firstName == "" || lastName == "" || firstPassword == "" || secondPassword == "" || email == "" || id == "")
+                return failWithMessage("The entire form must be filled");
 
-            if (!isValidName(firstName)) {
-                alert("Invalid first name");
-                return false;
-            }
-            if (!isValidName(lastName)) {
-                alert("Invalid lastName name");
-                return false;
-            }
+            if (!isValidName(firstName))
+                return failWithMessage("Invalid first name");
 
-            if (!isValidId(id)) {
-                alert("Invalid ID number");
-                return false;
-            }
+            if (!isValidName(lastName))
+                return failWithMessage("Invalid lastName name");
 
-            if (firstPassword != secondPassword) {
-                alert("passwords don't match");
-                return false;
-            }
+            if (!isValidId(id))
+                return failWithMessage("Invalid ID number");
 
-            if (!isValidEmail(email)) {
-                alert("Invalid email");
-                return false;
-            }
+            if (firstPassword != secondPassword)
+                return failWithMessage("passwords don't match");
+
+            if (!isValidEmail(email))
+                return failWithMessage("Invalid email");
 
             alert("everything is fine!");
             return true;
@@ -72,28 +62,47 @@
             else
                 return true;
         }
-	</script>
+        function failWithMessage(message) {
+            alert(message);
+            return false;
+        }
+    </script>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainTitleText" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="MainTitleText" runat="Server">
     הרשמה
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="PageBodyText" Runat="Server">
+<asp:Content ID="Content4" ContentPlaceHolderID="PageBodyText" runat="Server">
     <form id="inputForm" runat="server" name="inputForm" onsubmit="return checkForm()" method="post">
         <table>
-	        <tr><td><label>שם</label><td>               <td><input type="text"     name="firstName"/></td></tr>
-	        <tr><td><label>שם משפחה</label><td>         <td><input type="text"      name="lastName"/></td></tr>
-            <tr><td><label>מספר ת"ז</label><td>         <td><input type="text"      name="id" /></td></tr>
-	        <tr><td><label>סיסמא</label><td>            <td><input type="password"  name="userPassword"/></td></tr>
-	        <tr><td><label>סיסמא שנית</label><td>       <td><input type="password"  name="repeatPassword"/></td></tr>
-	        <tr><td><label>מייל</label><td>             <td><input type="text"      name="email"/></td></tr>
+            <tr>
+                <td>שם</td>
+                <td><input type="text" name="firstName" /></td>
+            </tr>
+            <tr>
+                <td>שם משפחה</td>
+                <td><input type="text" name="lastName" /></td>
+            </tr>
+            <tr>
+                <td>מספר ת"ז</td>
+                <td><input type="text" name="id" /></td>
+            </tr>
+            <tr>
+                <td>סיסמא</td>
+                <td><input type="password" name="userPassword" /></td>
+            </tr>
+            <tr>
+                <td>סיסמא שנית</td>
+                <td><input type="password" name="repeatPassword" /></td>
+            </tr>
+            <tr>
+                <td>מייל</td>
+                <td><input type="text" name="email" /></td>
+            </tr>
         </table>
 
         <button type="submit" name="submit" value="Submit">Submit</button>
-
-	</form>
+    </form>
     <p>
         <%=serverResponse%>
     </p>
 </asp:Content>
-
-

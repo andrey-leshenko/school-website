@@ -21,14 +21,15 @@ public partial class _Default : System.Web.UI.Page
             string id               = Request["id"];
 
 
-            DataLink.OperationResult resault = DataLink.AddUser(email, firstName, lastName, password, id);
+            DataLink.AddUser(email, firstName, lastName, password, id);
 
-            if (!resault.succeded)
-            {
-                serverResponse = resault.message;
-            }
+            if (DataLink.IsEmailRegistered(email))
+                serverResponse = string.Format("'{0}' is already registered", email);
+            else if (DataLink.IsIDRegistered(id))
+                serverResponse = string.Format("'{0}' is already registered", id);
             else
             {
+                DataLink.AddUser(email, firstName, lastName, password, id);
                 serverResponse = "User created";
                 Session["user"] = email;
             }

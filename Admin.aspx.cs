@@ -23,25 +23,19 @@ public partial class _Default : System.Web.UI.Page
         }
 
         if (Request["setAdmin"] != null)
-        {
-            string email = Request["setAdmin"];
-            DataLink.OperationResult result = DataLink.SetAdmin(email);
-        }
+            DataLink.SetAdmin(Request["setAdmin"], true);
 
         if (Request["unsetAdmin"] != null)
-        {
-            string email = Request["unsetAdmin"];
-            DataLink.OperationResult result = DataLink.UnsetAdmin(email);
-        }
+            DataLink.SetAdmin(Request["unsetAdmin"], false);
 
         DataTable table;
 
         string str = Request["search"];
 
         if (Request["search"] != "")
-            table = DataLink.GetAllUsers(Request["search"]);
+            table = DataLink.GetUsers(Request["search"]);
         else
-            table = DataLink.GetAllUsers();
+            table = DataLink.GetUsers();
 
         for (int i = 0; i < table.Rows.Count; i++)
         {
