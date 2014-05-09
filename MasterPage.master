@@ -32,6 +32,9 @@
                     <span runat="server" id="registrationButton">
                         <a href="Registration.aspx">הרשמה</a> |
                     </span>
+                    <span runat="server" id="UpdateButton">
+                        <a href="UpdateDetails.aspx">שינוי פרטים</a> |
+                    </span>
                     <span runat="server" id="adminButton">
                         <a href="Admin.aspx">ניהול</a> |
                     </span>

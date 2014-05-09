@@ -31,15 +31,12 @@ public static class DataLink
         return MyAdoHelper.IsExist(database, sql);
     }
 
-    public static void UpdateEmail(string oldEmail ,string newEmail)
+    public static void UpdateUser(string oldEmail, string email, string fname, string lname, string password, string id)
     {
-        string sql = string.Format("UPDATE Users SET Email='{0}' WHERE Email='{1}'", newEmail, oldEmail);
-        MyAdoHelper.DoQuery(database, sql);
-    }
-
-    public static void UpdatePassword(string email, string newPassword)
-    {
-        string sql = string.Format("UPDATE Users SET PassHash='{0}' WHERE email='{1}'", GetHashedPassword(newPassword), email);
+        string sql = string.Format("UPDATE Users SET Email='{0}', ID='{1}', FirstName='{2}', LastName='{3}', PassHash='{2}'",
+            email, id, fname, lname, GetHashedPassword(password));
+        sql += " " + string.Format("WHERE Email='{0}'", oldEmail);
+            
         MyAdoHelper.DoQuery(database, sql);
     }
 
@@ -55,14 +52,13 @@ public static class DataLink
 
         string sql = string.Format("SELECT * FROM Users WHERE {0} OR {1} OR {2} OR {3}", first, last, email, id);
 
-        DataTable dt = MyAdoHelper.ExecuteDataTable(database, sql);
+        return MyAdoHelper.ExecuteDataTable(database, sql); ;
+    }
 
-        // The table is formatted with uniform collumn widths
-        for (int row = 0; row < dt.Rows.Count; row++)
-            for (int col = 0; col < dt.Columns.Count; col++)
-                dt.Rows[row][col] = ((string)dt.Rows[row][col]).Trim();
-
-        return dt;
+    public static DataTable GetUser(string email)
+    {
+        string sql = String.Format("SELECT * FROM Users WHERE Email='{0}'", email);
+        return MyAdoHelper.ExecuteDataTable(database, sql); ;
     }
 
     public static void Delete(string email)

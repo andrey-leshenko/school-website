@@ -97,7 +97,7 @@ a:hover
 {
     display: inline-block;
 }
-#login-wrapper
+.form-wrapper
 {
     margin: auto;
     width: 20em;

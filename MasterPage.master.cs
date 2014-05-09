@@ -20,6 +20,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         else
         {
             logoutButton.Visible = false;
+            UpdateButton.Visible = false;
         }
 
         if (Session["admin"] == null || (bool)Session["admin"] == false)

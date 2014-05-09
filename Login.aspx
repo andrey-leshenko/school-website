@@ -8,7 +8,7 @@
     התחברות
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="PageBodyText" Runat="Server">
-    <div id="login-wrapper">
+    <div class="form-wrapper">
         <form runat="server">
             <div class="form-descriptions">
                 אמייל :<br />
