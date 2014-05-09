@@ -27,7 +27,7 @@ public partial class Default3 : System.Web.UI.Page
             }
             else
             {
-                loginResponse = "login failed. Remember letter case is important.";
+                loginResponse = "Email and password don't match";
             }
 
         }

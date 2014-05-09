@@ -20,7 +20,9 @@
                 <input type="password" name="loginPassword" />
                 <input type="submit" name="submit"/>
             </div>
-             <%=loginResponse %>
+            <div>
+                <%=loginResponse %>
+             </div>
         </form>
     </div>
 </asp:Content>

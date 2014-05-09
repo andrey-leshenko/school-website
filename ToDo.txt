@@ -1,3 +1,2 @@
 - Updating user data (the user itself)
-- gallery
 - Test all (searching too)

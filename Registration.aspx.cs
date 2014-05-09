@@ -20,9 +20,6 @@ public partial class _Default : System.Web.UI.Page
             string email            = Request["email"];
             string id               = Request["id"];
 
-
-            DataLink.AddUser(email, firstName, lastName, password, id);
-
             if (DataLink.IsEmailRegistered(email))
                 serverResponse = string.Format("'{0}' is already registered", email);
             else if (DataLink.IsIDRegistered(id))
