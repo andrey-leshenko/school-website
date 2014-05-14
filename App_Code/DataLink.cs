@@ -40,7 +40,7 @@ public static class DataLink
         MyAdoHelper.DoQuery(database, sql);
     }
 
-    public static DataTable GetUsers(string searhString = null)
+    public static DataTable GetUsers(string searhString)
     {
         if (searhString == null || searhString == "")
             return MyAdoHelper.ExecuteDataTable(database, "SELECT * FROM Users");

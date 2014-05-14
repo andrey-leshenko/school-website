@@ -35,7 +35,7 @@ public partial class _Default : System.Web.UI.Page
         if (Request["search"] != "")
             table = DataLink.GetUsers(Request["search"]);
         else
-            table = DataLink.GetUsers();
+            table = DataLink.GetUsers("");
 
         for (int i = 0; i < table.Rows.Count; i++)
         {
