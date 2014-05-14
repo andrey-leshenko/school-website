@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="Head" Runat="Server">
     <style>
         table, th, td
         {
@@ -19,19 +19,16 @@
 
     <script>
         function deleteUser(email) {
-            adminActions.deleteUser.value = email;
-            adminActions.submit();
+            aspnetForm.deleteUser.value = email;
+            aspnetForm.submit();
         }
         function setAdmin(email) {
-            adminActions.setAdmin.value = email;
-            adminActions.submit();
+            aspnetForm.setAdmin.value = email;
+            aspnetForm.submit();
         }
         function unsetAdmin(email) {
-            adminActions.unsetAdmin.value = email;
-            adminActions.submit();
-        }
-        function searchUsers() {
-            adminActions.submit();
+            aspnetForm.unsetAdmin.value = email;
+            aspnetForm.submit();
         }
     </script>
 </asp:Content>
@@ -43,26 +40,16 @@
         מונה מבקרים: <%=visiterCounter %>
     </p>
     
-    <form id="adminActions" name="adminActions" runat="server" method="post" >
+    <form runat="server" method="post" >
         <input type="hidden" value="" name="deleteUser"/>
         <input type="hidden" value="" name="setAdmin" />
         <input type="hidden" value="" name="unsetAdmin" />
 
-        <input type="text" value="" name="search" />
-        <input type="button" value="חפש" name="submitSearch" onclick="searchUsers()"/>
+        <input type="text" value="" name="search" runat="server" id="searchString"/>
+        <input type="submit" value="חפש"/>
     </form>
     <br />
-    <table>
-    <tr>
-        <th>Email</th>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Admin</th>
-        <th>Delete</th>
-    </tr>
     <%=usersTable %>
-    </table>
 
 </asp:Content>
 

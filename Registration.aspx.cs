@@ -28,7 +28,8 @@ public partial class _Default : System.Web.UI.Page
             {
                 DataLink.AddUser(email, firstName, lastName, password, id);
                 serverResponse = "User created";
-                Session["user"] = email;
+                AccessControl.LogIn(this, email, false);
+                Response.Redirect("Homepage.aspx");
             }
         }
     }

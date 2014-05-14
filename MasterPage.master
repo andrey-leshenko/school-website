@@ -1,18 +1,16 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <link rel="shortcut icon" href="Images/icon.ico" />
     <meta name="author" content="Andrey Leshenko" />
     <title>
         <asp:ContentPlaceHolder ID="PageTitle" runat="server">
-
         </asp:ContentPlaceHolder>
     </title>
-    <link rel="Stylesheet" href="Style.css" />
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <link rel="Stylesheet" href="Styles/Main.css" />
+    <asp:ContentPlaceHolder ID="Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body dir="rtl">
@@ -29,32 +27,28 @@
                     <a href="About.aspx">אודות</a> |
                     <a href="Volunteering.aspx">התנדבות</a> |
                     <a href="Gallery.aspx">תמונות</a> |
-                    <span runat="server" id="registrationButton">
+                    <span runat="server" id="registrationButton" visible="false">
                         <a href="Registration.aspx">הרשמה</a> |
                     </span>
-                    <span runat="server" id="UpdateButton">
+                    <span runat="server" id="updateButton" visible="false">
                         <a href="UpdateDetails.aspx">שינוי פרטים</a> |
                     </span>
-                    <span runat="server" id="adminButton">
+                    <span runat="server" id="adminButton" visible="false">
                         <a href="Admin.aspx">ניהול</a> |
                     </span>
-                    <span runat="server" id="loginButton">
+                    <span runat="server" id="loginButton" visible="false">
                         <a href="Login.aspx">התחברות</a>
                     </span>
-                    <span runat="server" id="logoutButton">
+                    <span runat="server" id="logoutButton" visible="false">
                         <a href="Logout.aspx">התנתקות</a>
                     </span>
-                    
                 </div>
-
-                
             </nav>
         </div>
-        <span class="logedin-wrapper">
+        <span class="logged-in-as">
             <%=user%>
         </span>
         <div id="page-body">
-        
             <h1>
                 <asp:ContentPlaceHolder ID="MainTitleText" runat="server">
                 </asp:ContentPlaceHolder>
@@ -64,11 +58,6 @@
                     </asp:ContentPlaceHolder>
             </div>
         </div>
-
-        <div class="">
-
-        </div>
-
     </div>
     <div class="page-footer" dir="ltr">
             &copy Andrey Leshenko 2014

@@ -6,7 +6,7 @@ using System.Data;
 
 public static class DataLink
 {
-    public static bool LogIn(string email, string password)
+    public static bool Exists(string email, string password)
     {
         string sql = string.Format("SELECT * FROM Users WHERE Email='{0}' AND PassHash='{1}'", email, GetHashedPassword(password));
         return MyAdoHelper.IsExist(database, sql);
@@ -30,10 +30,9 @@ public static class DataLink
         string sql = string.Format("SELECT * FROM Users WHERE ID='{0}'", id);
         return MyAdoHelper.IsExist(database, sql);
     }
-
     public static void UpdateUser(string oldEmail, string email, string fname, string lname, string password, string id)
     {
-        string sql = string.Format("UPDATE Users SET Email='{0}', ID='{1}', FirstName='{2}', LastName='{3}', PassHash='{2}'",
+        string sql = string.Format("UPDATE Users SET Email='{0}', ID='{1}', FirstName='{2}', LastName='{3}', PassHash='{4}'",
             email, id, fname, lname, GetHashedPassword(password));
         sql += " " + string.Format("WHERE Email='{0}'", oldEmail);
             

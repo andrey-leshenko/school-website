@@ -5,7 +5,8 @@
 }
 body
 {
-    background-image: url('Images/triangular.png');
+    background-color: #b8b8be;
+    background-image: url('../Images/triangular.png');
 }
 #page-container
 {
@@ -92,17 +93,29 @@ a:hover
 .form-descriptions
 {
     display: inline-block;
+    line-height: 2.2em;
 }
 .form-fileds
 {
+    margin-right: 0.3em;
     display: inline-block;
+    line-height: 2.2em;
 }
-.form-wrapper
+.form-container
 {
     margin: auto;
     width: 20em;
 }
-.logedin-wrapper
+.logged-in-as
 {
+    color: Black;
+}
+
+.submit-container
+{
+    margin-right: 8.75em;
+}
+
+input {
     color: Black;
 }

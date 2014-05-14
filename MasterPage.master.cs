@@ -11,20 +11,21 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] != null)
+        if (AccessControl.IsLoggedIn(this.Page))
         {
-            user = "Loged in as " + (string)Session["user"];
-            loginButton.Visible = false;
-            registrationButton.Visible = false;
+            user = "Logged in as " + AccessControl.GetLoggedUser(this.Page);
+            // all the buttons are invisible ar first
+            logoutButton.Visible = true;
+            updateButton.Visible = true;            
         }
         else
         {
-            logoutButton.Visible = false;
-            UpdateButton.Visible = false;
+            loginButton.Visible = true;
+            registrationButton.Visible = true;
         }
 
-        if (Session["admin"] == null || (bool)Session["admin"] == false)
-            adminButton.Visible = false;
+        if (AccessControl.IsAdmin(this.Page))
+            adminButton.Visible = true;
 
         if (Application["visiters"] == null)
             Application["visiters"] = 0;

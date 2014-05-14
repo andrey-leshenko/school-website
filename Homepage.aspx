@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Homepage.aspx.cs" Inherits="_Default" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Title" ContentPlaceHolderID="PageTitle" Runat="server">
-    Homepage
+    משמר אזרחי
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainTitleText" Runat="Server">
     משמר אזרחי
@@ -49,7 +49,7 @@
                 פעילות ראשונית במסגרת המשמר האזרחי - ביצוע הפעילות בשלב זה יהיה ללא נשק. המועמד יידרש לביצוע שתי פעילויות לפחות טרם קבלת תעודת המינוי הקבועה.
             </li>
             <li>
-            קבלת תעודת מינוי קבועה ומעמד של חבר מן המנין במשמר האזרחי.‏‏
+            קבלת תעודת מינוי קבועה ומעמד של חבר מן המנין במשמר האזרחי.
             </li>
         </ul>
     </section>

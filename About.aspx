@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" Runat="Server">
+אודות
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="Head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainTitleText" Runat="Server">
     אודות
@@ -37,4 +38,3 @@
         </ul>
     </p>
 </asp:Content>
-

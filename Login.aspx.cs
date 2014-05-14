@@ -14,22 +14,18 @@ public partial class Default3 : System.Web.UI.Page
         string email = Request["loginEmail"];
         string password = Request["loginPassword"];
 
-
         if (email != null && password != null && Request["submit"] != null)
         {
-
-            if (DataLink.LogIn(email, password))
+            if (DataLink.Exists(email, password))
             {
-                Session["user"] = email;
-                Session["admin"] = DataLink.IsAdmin(email);
-                loginResponse = "You have loged in successfully.";
+                AccessControl.LogIn(this, email, DataLink.IsAdmin(email));
+                loginResponse = "You have logged in successfully.";
                 Response.Redirect("Homepage.aspx");
             }
             else
             {
                 loginResponse = "Email and password don't match";
             }
-
         }
     }
 }
