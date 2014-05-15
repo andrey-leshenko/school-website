@@ -27,13 +27,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (AccessControl.IsAdmin(this.Page))
             adminButton.Visible = true;
 
-        if (Application["visiters"] == null)
-            Application["visiters"] = 0;
-
-        if (Session["countedVisiter"] == null)
-        {
-            Application["visiters"] = (int)Application["visiters"] + 1;
-            Session["countedVisiter"] = true;
-        }
+        VisitorCounter.LogPageLoad(this.Page);
     }
 }

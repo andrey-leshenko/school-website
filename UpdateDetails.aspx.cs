@@ -21,8 +21,7 @@ public partial class _Default : System.Web.UI.Page
             GetFirstFromTable(user, "FirstName"),
             GetFirstFromTable(user, "LastName"),
             GetFirstFromTable(user, "ID"),
-            GetFirstFromTable(user, "Email")
-            );
+            GetFirstFromTable(user, "Email"));
         
         if (Request["submit"] != null)
         {
@@ -39,8 +38,10 @@ public partial class _Default : System.Web.UI.Page
             else
             {
                 DataLink.UpdateUser(GetFirstFromTable(user, "Email"), email, firstName, lastName, password, id);
-                serverResponse = "Data Updated";
                 AccessControl.LogIn(this, email, DataLink.IsAdmin(email));
+                Response.Write(string.Format("<script>{0}</script>", "alert('Data Updated')"));
+                // If we would have user Response.Redirect, it wouldn't have loaded the alert
+                Response.Write(string.Format("<script>{0}</script>", "window.location = 'Homepage.aspx';"));
             }
         }
     }
@@ -70,7 +71,6 @@ public partial class _Default : System.Web.UI.Page
         inputEmail.Value = email;
 
         string br = "<br />";
-
 
         return
             RenderControlToHtml(inputFirst)         + br +

@@ -10,7 +10,7 @@ using System.Data;
 public partial class _Default : System.Web.UI.Page
 {
     public string usersTable = "";
-    public int visiterCounter;
+    public int visitors;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -32,8 +32,7 @@ public partial class _Default : System.Web.UI.Page
     // This will load after MasterPage.On_Load()
     protected override void OnLoadComplete(EventArgs e)
     {
-        if (Application["visiters"] != null)
-            visiterCounter = (int)Application["visiters"];
+        visitors = VisitorCounter.GetCount(this);
         base.OnLoadComplete(e);
     }
 
@@ -81,8 +80,6 @@ public partial class _Default : System.Web.UI.Page
             HtmlButton deleteButton = new HtmlButton();
             deleteButton.Attributes.Add("onclick", string.Format("deleteUser('{0}')", dt.Rows[i]["Email"]));
             deleteButton.InnerText = "X";
-
-
 
             emailCell       .InnerText = (string)dt.Rows[i]["Email"];
             idCell          .InnerText = (string)dt.Rows[i]["ID"];

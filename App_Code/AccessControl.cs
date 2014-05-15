@@ -34,11 +34,9 @@ public static class AccessControl
 
     public static bool IsAdmin(Page page)
     {
-        if (page.Session[adminField] == null)
-            return false;
-        return (bool)page.Session[adminField];
+        return (bool)(page.Session[adminField] ?? false);
     }
 
-    private static string userField = "logedInUser";
-    private static string adminField = "admin";
+    private static string userField = "LoggedInUser";
+    private static string adminField = "Admin";
 }
