@@ -95,7 +95,6 @@ public static class DataLink
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
         for (int i = 0; i < hash.Length; i++)
             sb.Append(hash[i].ToString("x2"));
-
         return sb.ToString();
     }
 }

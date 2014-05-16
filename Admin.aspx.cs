@@ -50,7 +50,7 @@ public partial class _Default : System.Web.UI.Page
         firstHeader     .InnerText = "First Name";
         lastHeader      .InnerText = "Last Name";
         adminHeader     .InnerText = "Admin";
-        deleteHeader    .InnerText = "Email";
+        deleteHeader    .InnerText = "Delete";
 
         HtmlTableRow headerRow = new HtmlTableRow();
         headerRow.Cells.Add(emailHeader);
@@ -74,17 +74,17 @@ public partial class _Default : System.Web.UI.Page
 
             HtmlInputCheckBox adminCheckbox = new HtmlInputCheckBox();
             string onClickFunction = ((bool)dt.Rows[i]["Admin"]) ? "unsetAdmin" : "setAdmin";
-            adminCheckbox.Attributes.Add("onclick", string.Format("{0}('{1}')", onClickFunction, dt.Rows[i]["Email"]));
+            adminCheckbox.Attributes.Add("onclick", string.Format("{0}('{1}')", onClickFunction, ((string)dt.Rows[i]["Email"]).Trim()));
             adminCheckbox.Checked = (bool)dt.Rows[i]["Admin"];
 
             HtmlButton deleteButton = new HtmlButton();
-            deleteButton.Attributes.Add("onclick", string.Format("deleteUser('{0}')", dt.Rows[i]["Email"]));
+            deleteButton.Attributes.Add("onclick", string.Format("deleteUser('{0}')", ((string)dt.Rows[i]["Email"]).Trim()));
             deleteButton.InnerText = "X";
 
-            emailCell       .InnerText = (string)dt.Rows[i]["Email"];
-            idCell          .InnerText = (string)dt.Rows[i]["ID"];
-            firstNameCell   .InnerText = (string)dt.Rows[i]["FirstName"];
-            lastNameCell    .InnerText = (string)dt.Rows[i]["LastName"];
+            emailCell       .InnerText = ((string)dt.Rows[i]["Email"]).Trim();
+            idCell          .InnerText = ((string)dt.Rows[i]["ID"]).Trim();
+            firstNameCell   .InnerText = ((string)dt.Rows[i]["FirstName"]).Trim();
+            lastNameCell    .InnerText = ((string)dt.Rows[i]["LastName"]).Trim();
             adminCell.InnerHtml = RenderControlToHtml(adminCheckbox);
             deleteCell.InnerHtml = RenderControlToHtml(deleteButton);
 

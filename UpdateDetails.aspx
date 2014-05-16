@@ -20,7 +20,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="PageBodyText" runat="Server">
 <div class="form-container">
-    <form runat="server" onsubmit="return checkDetailsForm(aspnetForm)">
+    <form runat="server" onsubmit="return checkDetailsForm(document.getElementsByTagName('form')[0])">
         <div class="form-descriptions">
             שם:         <br />
             שם משפחה:   <br />
