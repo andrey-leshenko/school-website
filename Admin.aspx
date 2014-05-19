@@ -20,16 +20,19 @@
     <script src="Scripts/FormValidation.js"></script>
     <script>
         function deleteUser(email) {
-            aspnetForm.deleteUser.value = email;
-            aspnetForm.submit();
+            var form = document.getElementsByTagName("form")[0];
+            form.deleteUser.value = email;
+            form.submit();
         }
         function setAdmin(email) {
-            aspnetForm.setAdmin.value = email;
-            aspnetForm.submit();
+            var form = document.getElementsByTagName("form")[0];
+            form.setAdmin.value = email;
+            form.submit();
         }
         function unsetAdmin(email) {
-            aspnetForm.unsetAdmin.value = email;
-            aspnetForm.submit();
+            var form = document.getElementsByTagName("form")[0];
+            form.unsetAdmin.value = email;
+            form.submit();
         }
     </script>
 </asp:Content>
@@ -40,7 +43,6 @@
     <p>
         מונה מבקרים: <%=visitors %>
     </p>
-    
     <form runat="server" method="post" onsubmit="cleanForm(document.forms[0])">
         <input type="hidden" value="" name="deleteUser"/>
         <input type="hidden" value="" name="setAdmin" />

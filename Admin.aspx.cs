@@ -18,13 +18,13 @@ public partial class _Default : System.Web.UI.Page
             Response.Redirect("Homepage.aspx");
 
         if (Request["deleteUser"] != null)
-            DataLink.Delete(Request["deleteUser"]);
+            DataLink.Delete(Request["deleteUser"].Trim());
 
         if (Request["setAdmin"] != null)
-            DataLink.SetAdmin(Request["setAdmin"], true);
+            DataLink.SetAdmin(Request["setAdmin"].Trim(), true);
 
         if (Request["unsetAdmin"] != null)
-            DataLink.SetAdmin(Request["unsetAdmin"], false);
+            DataLink.SetAdmin(Request["unsetAdmin"].Trim(), false);
 
         usersTable = ConstructTable(DataLink.GetUsers(searchString.Value));
     }
