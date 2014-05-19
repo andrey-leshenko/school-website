@@ -25,11 +25,11 @@ public partial class _Default : System.Web.UI.Page
         
         if (Request["submit"] != null)
         {
-            string firstName = Request["firstName"];
-            string lastName = Request["lastName"];
-            string password = Request["userPassword"];
-            string email = Request["email"];
-            string id = Request["id"];
+            string firstName    = Request["firstName"];
+            string lastName     = Request["lastName"];
+            string password     = Request["userPassword"];
+            string email        = Request["email"];
+            string id           = Request["id"];
 
             if (email != GetFirstFromTable(user, "Email") && DataLink.IsEmailRegistered(email))
                 serverResponse = string.Format("'{0}' is already registered", email);
@@ -39,9 +39,9 @@ public partial class _Default : System.Web.UI.Page
             {
                 DataLink.UpdateUser(GetFirstFromTable(user, "Email"), email, firstName, lastName, password, id);
                 AccessControl.LogIn(this, email, DataLink.IsAdmin(email));
-                Response.Write(string.Format("<script>{0}</script>", "alert('Data Updated')"));
+                WriteScript("alert('Data Updated')");
                 // If we would have user Response.Redirect, it wouldn't have loaded the alert
-                Response.Write(string.Format("<script>{0}</script>", "window.location = 'Homepage.aspx';"));
+                WriteScript("window.location = 'Homepage.aspx'");
             }
         }
     }
@@ -93,5 +93,10 @@ public partial class _Default : System.Web.UI.Page
     private string GetFirstFromTable(DataTable dt, string columnName)
     {
         return dt.Rows[0][columnName].ToString().Trim();
+    }
+
+    private void WriteScript(string script)
+    {
+        Response.Write(string.Format("<script>{0}</script>", script));
     }
 }

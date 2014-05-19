@@ -50,7 +50,7 @@ public partial class _Default : System.Web.UI.Page
         firstHeader     .InnerText = "First Name";
         lastHeader      .InnerText = "Last Name";
         adminHeader     .InnerText = "Admin";
-        deleteHeader    .InnerText = "Email";
+        deleteHeader    .InnerText = "Delete";
 
         HtmlTableRow headerRow = new HtmlTableRow();
         headerRow.Cells.Add(emailHeader);

@@ -17,7 +17,7 @@
             margin: 0;
         }
     </style>
-
+    <script src="Scripts/FormValidation.js"></script>
     <script>
         function deleteUser(email) {
             aspnetForm.deleteUser.value = email;
@@ -41,7 +41,7 @@
         מונה מבקרים: <%=visitors %>
     </p>
     
-    <form runat="server" method="post" >
+    <form runat="server" method="post" onsubmit="cleanForm(document.forms[0])">
         <input type="hidden" value="" name="deleteUser"/>
         <input type="hidden" value="" name="setAdmin" />
         <input type="hidden" value="" name="unsetAdmin" />
