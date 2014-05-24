@@ -40,7 +40,7 @@ public partial class _Default : System.Web.UI.Page
                 DataLink.UpdateUser(GetFirstFromTable(user, "Email"), email, firstName, lastName, password, id);
                 AccessControl.LogIn(this, email, DataLink.IsAdmin(email));
                 WriteScript("alert('Data Updated')");
-                // If we would have user Response.Redirect, it wouldn't have loaded the alert
+                // If we would have used Response.Redirect, it wouldn't have loaded the alert
                 WriteScript("window.location = 'Homepage.aspx'");
             }
         }
@@ -48,27 +48,24 @@ public partial class _Default : System.Web.UI.Page
 
     private string ContructInputs(string first, string last, string id, string email)
     {
-        HtmlInputText inputFirst = new HtmlInputText();
-        inputFirst.ID = "firstName";
-        inputFirst.Value = first;
+        HtmlInputText       inputFirst      = new HtmlInputText();
+        HtmlInputText       inputLast       = new HtmlInputText();
+        HtmlInputText       inputId         = new HtmlInputText();
+        HtmlInputPassword   inputPass       = new HtmlInputPassword();
+        HtmlInputPassword   inputRepeatPass = new HtmlInputPassword();
+        HtmlInputText       inputEmail      = new HtmlInputText();
 
-        HtmlInputText inputLast = new HtmlInputText();
-        inputLast.ID = "lastName";
-        inputLast.Value = last;
+        inputFirst.ID       = "firstName";
+        inputLast.ID        = "lastName";
+        inputPass.ID        = "userPassword";
+        inputRepeatPass.ID  = "repeatPassword";
+        inputId.ID          = "id";
+        inputEmail.ID       = "email";
 
-        HtmlInputText inputId = new HtmlInputText();
-        inputId.ID = "id";
-        inputId.Value = id;
-
-        HtmlInputPassword inputPass = new HtmlInputPassword();
-        inputPass.ID = "userPassword";
-
-        HtmlInputPassword inputRepeatPass = new HtmlInputPassword();
-        inputRepeatPass.ID = "repeatPassword";
-
-        HtmlInputText inputEmail = new HtmlInputText();
-        inputEmail.ID = "email";
-        inputEmail.Value = email;
+        inputFirst.Value    = first;
+        inputLast.Value     = last;
+        inputId.Value       = id;
+        inputEmail.Value    = email;
 
         string br = "<br />";
 

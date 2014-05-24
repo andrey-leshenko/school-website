@@ -1,21 +1,13 @@
-﻿// This script's main function checks if the form is filled
-// with legit values, and can be processes at server side
-
-// It's important the the names of the inputs don't change
-
-function checkDetailsForm(form) {
-    cleanForm(form);
-
-    var firstName = form.firstName.value;
-    var lastName = form.lastName.value;
-    var id = form.id.value;
-    var firstPassword = form.userPassword.value;
-    var secondPassword = form.repeatPassword.value;
-    var email = form.email.value;
+﻿function checkDetailsForm(form) {
+    var firstName       = form.firstName.value;
+    var lastName        = form.lastName.value;
+    var id              = form.id.value;
+    var firstPassword   = form.userPassword.value;
+    var secondPassword  = form.repeatPassword.value;
+    var email           = form.email.value;
 
     if (firstName == "" || lastName == "" || firstPassword == "" || secondPassword == "" || email == "" || id == "")
         return failWithMessage("The entire form must be filled");
-
     if (firstName.length > 30)
         return failWithMessage("The first name can't be longer than 30 characters");
     if (lastName.length > 30)
@@ -25,31 +17,17 @@ function checkDetailsForm(form) {
         
 
     if (!isValidName(firstName))
-        return failWithMessage("Invalid first name.\nMust contain only hebrew or english letters, spaces, and hypens");
-
+        return failWithMessage("Invalid first name.\nMust contain only hebrew letters, spaces, and hypens");
     if (!isValidName(lastName))
-        return failWithMessage("Invalid last name.\nMust contain only hebrew or english letters, spaces, and hypens or single qoutes");
-
+        return failWithMessage("Invalid last name.\nMust contain only hebrew letters, spaces, and hypens");
     if (!isValidId(id))
         return failWithMessage("Invalid ID number");
-
     if (firstPassword != secondPassword)
-        return failWithMessage("passwords don't match");
-
+        return failWithMessage("Passwords don't match");
     if (!isValidEmail(email))
         return failWithMessage("Invalid email");
 
     return true;
-}
-
-function cleanForm(form) {
-    for (var i = 0; i < form.elements.length; i++) {
-        if (form.elements[i].type == "text") {
-            form.elements[i].value = form.elements[i].value.trim();
-            // replacing single qoute by backtick, saves us from sql errors
-            form.elements[i].value = form.elements[i].value.replace("'", "`");
-        }
-    }
 }
 
 function isValidName(name) {
@@ -57,18 +35,22 @@ function isValidName(name) {
     
     for (var i = 0; i < name.length; i++) {
         var c = name.charAt(i);
-        if ((c < 'a' || c > 'z') && (c < 'א' || c > 'ת') && c != ' ' && c != '-' && c != "`")
+        if ((c < 'א' || c > 'ת') && c != ' ' && c != '-')
             return false;
     }
     return true;
 }
 function isValidEmail(email) {
-    if (email.indexOf('.') == -1 || email.indexOf('.') == 0 || email.indexOf('.') == email.length - 1 || email.lastIndexOf('.') < email.indexOf('@'))
+    name = name.toLowerCase();
+    var atIndex = email.indexOf('@');
+    if (email.indexOf('.') == -1 || email.indexOf('.') == 0 || email.lastIndexOf('.') < atIndex)
         return false;
-    if (email.indexOf('@') == -1 || email.indexOf('@') == 0 || email.indexOf('@') == email.length - 1 || email.indexOf('@') != email.lastIndexOf('@'))
+    if (atIndex == -1 || atIndex == 0 || atIndex == email.length - 1 || atIndex != email.lastIndexOf('@'))
         return false;
-    if (isContinuous(email)) {
-        return false;
+    for (var i = 0; i < email.length; i++) {
+        var c = email.charAt(i);
+        if ((c < 'a' || c > 'z') && (c < '0' || c > '9') && c != '-' && c != "_" && c != '.' && c != '@')
+            return false;
     }
     return true;
 }

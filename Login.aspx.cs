@@ -16,6 +16,7 @@ public partial class Default3 : System.Web.UI.Page
 
         if (email != null && password != null && Request["submit"] != null)
         {
+            email = email.Replace("'", "");
             if (DataLink.Exists(email, password))
             {
                 AccessControl.LogIn(this, email, DataLink.IsAdmin(email));

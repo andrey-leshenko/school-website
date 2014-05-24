@@ -6,13 +6,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Head" runat="Server">
     <script type="text/javascript" src="Scripts/FormValidation.js">
         // Exports: checkDetailsForm(form)
-        // Requires:
-        //          form.firstName
-        //          form.lastName
-        //          form.id
-        //          form.userPassword
-        //          form.repeatPassword
-        //          form.email
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainTitleText" runat="Server">

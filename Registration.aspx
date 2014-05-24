@@ -6,13 +6,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Head" runat="Server">
     <script type="text/javascript" src="Scripts/FormValidation.js">
         // Exports: checkDetailsForm(form)
-        // Requires:
-        //          form.firstName
-        //          form.lastName
-        //          form.id
-        //          form.userPassword
-        //          form.repeatPassword
-        //          form.email
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainTitleText" runat="Server">
@@ -20,11 +13,6 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="PageBodyText" runat="Server">
 <div class="form-container">
-<script>
-    function getForm() {
-        return asd;
-    }
-    </script>
     <form runat="server" onsubmit="return checkDetailsForm(document.forms[0])">
         <div class="form-descriptions">
             שם:         <br />

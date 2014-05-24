@@ -14,11 +14,11 @@ public partial class _Default : System.Web.UI.Page
     {
         if (Request["submit"] != null)
         {
-            string firstName        = Request["firstName"];
-            string lastName         = Request["lastName"];
-            string password         = Request["userPassword"];
-            string email            = Request["email"];
-            string id               = Request["id"];
+            string firstName    = Request["firstName"];
+            string lastName     = Request["lastName"];
+            string password     = Request["userPassword"];
+            string email        = Request["email"];
+            string id           = Request["id"];
 
             if (DataLink.IsEmailRegistered(email))
                 serverResponse = string.Format("'{0}' is already registered", email);

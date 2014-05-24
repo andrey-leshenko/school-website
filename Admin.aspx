@@ -20,17 +20,17 @@
     <script src="Scripts/FormValidation.js"></script>
     <script>
         function deleteUser(email) {
-            var form = document.getElementsByTagName("form")[0];
+            var form = document.forms[0];
             form.deleteUser.value = email;
             form.submit();
         }
         function setAdmin(email) {
-            var form = document.getElementsByTagName("form")[0];
+            var form = document.forms[0];
             form.setAdmin.value = email;
             form.submit();
         }
         function unsetAdmin(email) {
-            var form = document.getElementsByTagName("form")[0];
+            var form = document.forms[0];
             form.unsetAdmin.value = email;
             form.submit();
         }
@@ -43,7 +43,7 @@
     <p>
         מונה מבקרים: <%=visitors %>
     </p>
-    <form runat="server" method="post" onsubmit="cleanForm(document.forms[0])">
+    <form runat="server" method="post">
         <input type="hidden" value="" name="deleteUser"/>
         <input type="hidden" value="" name="setAdmin" />
         <input type="hidden" value="" name="unsetAdmin" />

@@ -18,15 +18,15 @@ public partial class _Default : System.Web.UI.Page
             Response.Redirect("Homepage.aspx");
 
         if (Request["deleteUser"] != null)
-            DataLink.Delete(Request["deleteUser"].Trim());
+            DataLink.Delete(Request["deleteUser"].Trim().Replace("'", ""));
 
         if (Request["setAdmin"] != null)
-            DataLink.SetAdmin(Request["setAdmin"].Trim(), true);
+            DataLink.SetAdmin(Request["setAdmin"].Trim().Replace("'", ""), true);
 
         if (Request["unsetAdmin"] != null)
-            DataLink.SetAdmin(Request["unsetAdmin"].Trim(), false);
+            DataLink.SetAdmin(Request["unsetAdmin"].Trim().Replace("'", ""), false);
 
-        usersTable = ConstructTable(DataLink.GetUsers(searchString.Value));
+        usersTable = ConstructTable(DataLink.GetUsers(searchString.Value.Replace("'", "")));
     }
 
     // This will load after MasterPage.On_Load()
