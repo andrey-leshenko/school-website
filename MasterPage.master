@@ -26,7 +26,10 @@
                 <div id="toolbar-buttons">
                     <a href="About.aspx">אודות</a> |
                     <a href="Volunteering.aspx">התנדבות</a> |
-                    <a href="Gallery.aspx">תמונות</a> |
+                    
+                    <span runat="server" id="galleryButton" visible="false">
+                        <a href="Gallery.aspx">תמונות</a> |
+                    </span>
                     <span runat="server" id="registrationButton" visible="false">
                         <a href="Registration.aspx">הרשמה</a> |
                     </span>
@@ -36,6 +39,7 @@
                     <span runat="server" id="adminButton" visible="false">
                         <a href="Admin.aspx">ניהול</a> |
                     </span>
+                    
                     <span runat="server" id="loginButton" visible="false">
                         <a href="Login.aspx">התחברות</a>
                     </span>

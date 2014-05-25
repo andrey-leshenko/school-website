@@ -14,9 +14,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (AccessControl.IsLoggedIn(this.Page))
         {
             user = "Logged in as " + AccessControl.GetLoggedUser(this.Page);
-            // all the buttons are invisible ar first
+            // all the buttons are invisible at first
             logoutButton.Visible = true;
-            updateButton.Visible = true;            
+            updateButton.Visible = true;
+            galleryButton.Visible = true;
         }
         else
         {
