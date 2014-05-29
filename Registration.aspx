@@ -7,11 +7,12 @@
         function checkForm() {
             var firstName = inputForm.firstName.value;
             var lastName = inputForm.lastName.value;
+            var id = inputForm.id.value;
             var firstPassword = inputForm.userPassword.value;
             var secondPassword = inputForm.repeatPassword.value;
             var email = inputForm.email.value;
 
-            if (firstName == "" || lastName == "" || firstPassword == "" || secondPassword == "" || email == "") {
+            if (firstName == "" || lastName == "" || firstPassword == "" || secondPassword == "" || email == "" || id == "") {
                 alert("The entire form must be filled");
                 return false;
             }
@@ -22,6 +23,11 @@
             }
             if (!isValidName(lastName)) {
                 alert("Invalid lastName name");
+                return false;
+            }
+
+            if (!isValidId(id)) {
+                alert("Invalid ID number");
                 return false;
             }
 
@@ -59,6 +65,12 @@
                 return false;
             }
             return true;
+        }
+        function isValidId(id) {
+            if (id.trim().length != 9 || isNaN(id))
+                return false;
+            else
+                return true;
         }
 	</script>
 </asp:Content>
