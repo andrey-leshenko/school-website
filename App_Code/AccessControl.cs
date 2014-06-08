@@ -9,6 +9,9 @@ using System.Web.SessionState;
 /// </summary>
 public static class AccessControl
 {
+    private static string userField = "LoggedInUser";
+    private static string adminField = "Admin";
+
     public static void LogIn(Page page, string username, bool admin)
     {
         page.Session[userField] = username;
@@ -36,7 +39,4 @@ public static class AccessControl
     {
         return (bool)(page.Session[adminField] ?? false);
     }
-
-    private static string userField = "LoggedInUser";
-    private static string adminField = "Admin";
 }

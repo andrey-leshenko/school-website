@@ -127,7 +127,4 @@ public class MyAdoHelper
         
         return printStr;
     }
-
-
-
 }

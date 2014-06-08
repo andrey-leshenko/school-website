@@ -5,6 +5,9 @@ using System.Web.UI;
 
 public static class VisitorCounter
 {
+    private static string countedVisitor = "CountedVisitor";
+    private static string visitors = "Visitors";
+
     public static void LogPageLoad(Page page)
     {
         if (page.Session[countedVisitor] == null)
@@ -24,7 +27,4 @@ public static class VisitorCounter
     {
         application[visitors] = (int)(application[visitors] ?? 0) + 1;
     }
-
-    private static string countedVisitor = "CountedVisitor";
-    private static string visitors = "Visitors";
 }
