@@ -36,15 +36,17 @@
     ניהול
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="PageBodyText" Runat="Server">
+    <p>
+        מונה מבקרים: <%=visiterCounter %>
+    </p>
+    
     <form id="adminActions" name="adminActions" runat="server" method="post" >
         <input type="hidden" value="" name="deleteUser"/>
         <input type="hidden" value="" name="setAdmin" />
         <input type="hidden" value="" name="unsetAdmin" />
-    </form>
 
-    <p>
-        מונה מבקרים: <%=visiterCounter %>
-    </p>
+        <input type="text" value="" name="search" />
+    </form>
 
     <table>
     <tr>

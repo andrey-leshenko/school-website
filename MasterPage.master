@@ -116,7 +116,6 @@
 </head>
 <body dir="rtl">
     <div id="page-container">
-        <!-- http://subtlepatterns.com/stardust/ -->
         <div id="toolbar">
             <nav>
                 <div id="toolbar-logo">
@@ -129,7 +128,9 @@
                     <a href="About.aspx">אודות</a> |
                     <a href="Volunteering.aspx">התנדבות</a> |
                     <a href="Gallery.aspx">תמונות</a> |
-                    <a href="Registration.aspx">הרשמה</a> |
+                    <span runat="server" id="registrationButton">
+                        <a href="Registration.aspx">הרשמה</a> |
+                    </span>
                     <span runat="server" id="adminButton">
                         <a href="Admin.aspx">ניהול</a> |
                     </span>
@@ -165,7 +166,7 @@
         </div>
 
     </div>
-    <div class="page-footer">
+    <div class="page-footer" dir="ltr">
             &copy Andrey Leshenko 2014
     </div>
 </body>

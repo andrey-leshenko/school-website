@@ -15,7 +15,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             user = "Loged in as " + (string)Session["user"];
             loginButton.Visible = false;
-            //Page.FindControl("registerd-links").Visible = false;
+            registrationButton.Visible = false;
         }
         else
         {
